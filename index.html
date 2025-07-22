@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Marca Personal - Kateryn Andrade</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
+<style>
+  body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #0f172a;
+    color: #f1f5f9;
+  }
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background-color: #1e293b;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  header .logo img {
+    height: 70px;
+    width: auto;
+  }
+  nav a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: #94a3b8;
+    font-size: 18px;
+  }
+  nav a:hover, nav a.active {
+    color: #60a5fa;
+  }
+  .hero {
+    display: flex;
+    justify-content: center;
+    padding: 60px 20px;
+    background-color: #0f172a;
+  }
+  .hero .texto-container {
+    background-color: #1e293b;
+    display: flex;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    border-radius: 10px;
+    overflow: hidden;
+    max-width: 1200px;
+    width: 100%;
+  }
+  .hero .foto {
+    padding: 20px;
+    text-align: center;
+    background-color: #334155;
+  }
+  .hero .foto img {
+    border-radius: 50%;
+    width: 320px;
+    height: 320px;
+    object-fit: cover;
+  }
+  .hero .foto p {
+    margin-top: 10px;
+    font-size: 18px;
+    color: #f1f5f9;
+  }
+  .hero .texto {
+    padding: 50px;
+    color: #f1f5f9;
+    flex: 1;
+  }
+  .hero .texto h1 {
+    font-size: 28px;
+    margin-bottom: 38px;
+    color: #60a5fa;
+  }
+  .hero .texto p {
+    font-size: 16px;
+    margin-bottom: 16px;
+    color: #cbd5e1;
+  }
+  .section {
+    padding: 60px 40px;
+    max-width: 1200px;
+    margin: auto;
+  }
+  .section h2 {
+    color: #60a5fa;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  .formacion-grid {
+   display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  .formacion-item {
+    background-color: #1e293b;
+    border-left: 4px solid #60a5fa;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  }
+  .formacion-item h3 {
+    margin-top: 0;
+    color: #f1f5f9;
+  }
+  .formacion-item p {
+    color: #cbd5e1;
+  }
+  .galeria-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+  }
+  .galeria-item {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  }
+  .galeria-item img {
+    width: 340px;
+    height: 226px;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    max-width: 100%;
+    max-height: 30vw;
+  }
+  .galeria-item .overlay {
+    position: absolute;
+    bottom: 0;
+    background: rgba(15, 23, 42, 0.85);
+    color: #f1f5f9;
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  .galeria-item:hover .overlay {
+    opacity: 1;
+  }
+  .contacto-form {
+    background-color: #1e293b;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    max-width: 600px;
+    margin: auto;
+  }
+  .contacto-form input, .contacto-form textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 6px;
+    background-color: #334155;
+    color: #f1f5f9;
+  }
+  .contacto-form button {
+    background-color: #60a5fa;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 6px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  .contacto-form button:hover {
+    background-color: #3b82f6;
+  }
+  .grafico-habilidades {
+  background-color: #1e293b;
+  padding: 30px;
+  border-radius: 10px;
+  margin-bottom: 40px;
+}
+
+.grafico-habilidades h2 {
+  color: #60a5fa;
+  margin-bottom: 20px;
+}
+
+.barra {
+  background-color: #334155;
+  border-radius: 5px;
+  overflow: hidden;
+  margin-bottom: 15px;
+}
+
+.barra span {
+  display: block;
+  height: 24px;
+  line-height: 24px;
+  color: #fff;
+  padding-left: 10px;
+  background-color: #60a5fa;
+}
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+    align-items: center;
+    justify-content: center;
+  }
+
+  .modal-content {
+    max-width: 90%;
+    max-height: 90%;
+    background-color: transparent;
+    align-items: center;
+    justify-content: center;
+    display: none;
+  }
+
+  .modal-content img {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    
+    }
+    .galeria-collage {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 8px;
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: stretch;
+}
+.deporte-img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: none;
+  transition: transform 0.3s cubic-bezier(.25,.8,.25,1);
+  background: none;
+  position: relative;
+  z-index: 1;
+  padding: 0;
+  display: block;
+}
+.deporte-img:hover {
+  transform: scale(1.08);
+  z-index: 2;
+}
+</style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="katy-removebg-preview.png" alt="Kateryn Andrade">
+    </div>
+    <nav>
+      <a href="#" class="active">INICIO</a>
+      <a href="#formacion">FORMACIÓN</a>
+      <a href="#logros">LOGROS</a>
+      <a href="#otros">OTROS ESTUDIOS</a>
+      <a href="#deporte">DEPORTE</a>
+      <a href="#contacto">CONTACTO</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="texto-container">
+      <div class="foto">
+        <img src="Imagen_de_WhatsApp_2025-07-20_a_las_23.50.40_9fd0e923-removebg-preview.png" alt="Foto de perfil">
+        <p style="font-size: 1.5rem;">Kateryn Andrade</p>
+      </div>
+      <div class="texto">
+        <h1 style="  font-style: italic;">Determinada, Atenta y Apasionada por aprender</h1>
+        <p>Me encantan los retos y todo lo que me saque de mi zona de confort. Disfruto enfrentarme a nuevas experiencias que me impulsen a crecer, me reten y me enseñen. Creo que cada desafío es una oportunidad para descubrir nuevas habilidades y ampliar mi perspectiva.</p> <p>Me considero una persona empática, curiosa y comprometida. Me motiva aprender constantemente y, sobre todo, aprender de las personas que me rodean. Valoro el trabajo en equipo, las conversaciones significativas y los proyectos que aportan algo valioso, tanto a nivel personal como colectivo.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="section" id="formacion">
+    <h2>Formación Académica</h2>
+    <div class="formacion-grid">
+      <div class="formacion-item">
+        <p><strong>2023-2025</strong></p>
+        <h3>¡Supérate! Grupo Q</h3>
+        <p>Programa de excelencia académica que busca fortalecer y aumentar habilidades en ingles informática y valores.</p>
+      </div>
+      <div class="formacion-item">
+        <p><strong>2024-2025</strong></p>
+        <h3>Complejo Educativo Ofelia Herrera</h3>
+        <p>Bachillerato</p>
+      </div>
+      <div class="formacion-item">
+        <p><strong>2014 - 2023</strong></p>
+        <h3>CECMCH - Centro Escolar Católico Marcelino Champagnat</h3>
+        <p>Educación Básica </p>
+      </div>
+       <div class="formacion-item">
+        <p><strong>2012 - 2013</strong></p>
+        <h3>Centro Escolar Católico San José</h3>
+        <p>Kinder 4 y 5 </p>
+      </div>
+    </div>
+  </div>
+
+ 
+
+  <div class="section" id="otros">
+    <h2>Otros Estudios</h2>
+    <hr style="border: none; border-top: 2px solid #60a5fa; margin: 10px 0 18px 0;">
+    <div class="section galeria-grid" style="padding-top: 10px;">
+      <div class="galeria-item" onclick="expandirImagen(this)"><img src="Bi.png" alt="Power BI"><div class="overlay">2025: Curso de Power BI</div></div>
+      <div class="galeria-item" onclick="expandirImagen(this)"><img src="diploma js.jpg" alt="JavaScript"><div class="overlay">2024: Curso de introducción a JavaScript</div></div>
+      <div class="galeria-item" onclick="expandirImagen(this)"><img src="Steam.jpg" alt="Science Camp"><div class="overlay">2024: Participación en Science Girl Camp</div></div>
+      <div class="galeria-item" onclick="expandirImagen(this)"><img src="power.png" alt="Power Apps"><div class="overlay">2023: Curso de Microsoft Power Apps</div></div>
+      <div class="galeria-item" onclick="expandirImagen(this)"><img src="git.png" alt="Git"><div class="overlay">2023: Curso de Git y GitHub</div></div>
+      <div class="galeria-item" onclick="expandirImagen(this)"><img src="principiantes - copia.png" alt="Programación"><div class="overlay">2023: Curso de programación para principiantes</div></div>
+      <div class="galeria-item" onclick="expandirImagen(this)"><img src="Frances.jpg" alt="Francés"><div class="overlay">2023: Curso básico de idioma Francés</div></div>
+      <div class="galeria-item" onclick="expandirImagen(this)"><img src="Aspirantado.jpg" alt="Catequesis"><div class="overlay">2023: Aspirantado de catequesis</div></div>
+      <div class="galeria-item" onclick="expandirImagen(this)"><img src="Violin.jpg" alt="Violín y Piano"><div class="overlay">2022: Curso básico de Violín y Piano</div></div>
+      <div class="galeria-item" onclick="expandirImagen(this)"><img src="IRCA.jpg" alt="Buffet navideño"><div class="overlay">2021: Curso de buffet navideño - IRCA</div></div>
+      <div class="galeria-item" onclick="expandirImagen(this)"><img src="tae.jpg" alt="Taekwondo"><div class="overlay">2025: 8° KUP en Taekwondo</div></div>
+    </div>
+  </div>
+<!-- Sección de logros académicos -->
+<div class="section" id="logros">
+  <h2>Logros Académicos</h2>
+  <hr style="border: none; border-top: 2px solid #60a5fa; margin: 10px 0 18px 0;">
+  <div class="galeria-grid">
+    <div class="galeria-item" onclick="expandirImagen(this)">
+      <img src="taek.jpg" alt="Taekwondo" width="200" height="300">
+      <div class="overlay">2025: Primer lugar en torneo nacional de Taekwondo categoría -55</div>
+    </div>
+    <div class="galeria-item" onclick="expandirImagen(this)">
+      <img src="excelencia.jpg" alt="Excelencia académica">
+      <div class="overlay">2023: Excelencia académica CECMCH</div>
+    </div>
+    <div class="galeria-item" onclick="expandirImagen(this)">
+      <img src="3.jpg" alt="Speech Contest">
+      <div class="overlay">2023: Tercer lugar en Speech Contest</div>
+    </div>
+    <div class="galeria-item" onclick="expandirImagen(this)">
+      <img src="Pastoral.jpg" alt="Apoyo comunidad">
+      <div class="overlay">2023: Reconocimiento por apoyo a la comunidad CECMCH</div>
+    </div>
+  </div>
+</div>
+
+<div id="modal" class="modal">
+  <div class="modal-content" onclick="event.stopPropagation()" style="display:none;">
+    <img id="imagenModal" src="" alt="Imagen ampliada" style="display:none;">
+  </div>
+</div>
+   <div class="section grafico-habilidades">
+    <h2>Habilidades en Software</h2>
+    <div class="barra"><span style="width: 50%;">Power BI 50%</span></div>
+    <div class="barra"><span style="width: 85%;">Microsoft Office 85%</span></div>
+    <div class="barra"><span style="width: 80%;">Power Apps 80%</span></div>
+    <div class="barra"><span style="width: 75%;">Canva 75%</span></div>
+    <div class="barra"><span style="width: 50%;">JavaScript 50%</span></div>
+    <div class="barra"><span style="width: 55%;">Git y GitHub 55%</span></div>
+  </div>
+
+  <div class="section" id="portafolio">
+    <h2>Portafolio</h2>
+    <hr style="border: none; border-top: 2px solid #60a5fa; margin: 10px 0 18px 0;">
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 30px; max-width: 1000px; margin: 0 auto;">
+      <div style="background-color: #1e293b; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.15); padding: 20px; display: flex; flex-direction: column; align-items: center;">
+        <img src="skyfly.jpg" alt="Proyecto 1" style="width: 100%; max-width: 180px; border-radius: 8px; margin-bottom: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.10);">
+        <p style="color: #cbd5e1; font-size: 15px; margin-bottom: 10px; text-align: center;">SkyFly: Irrigación de manera eficiente y enfocada de pesticidas en la agricultura para reducir costos</p>
+        <a href="sky.jpg" target="_blank" style="background-color: #60a5fa; color: #fff; padding: 8px 16px; border-radius: 6px; text-decoration: none; font-size: 14px;">Ver más</a>
+      </div>
+      <div style="background-color: #1e293b; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.15); padding: 20px; display: flex; flex-direction: column; align-items: center;">
+        <img src="isss.png" alt="Proyecto 2" style="width: 100%; max-width: 300px; border-radius: 8px; margin-bottom: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.10);">
+        <div style="width: 100%; display: flex; flex-direction: column; align-items: center; margin-top: 15px;">
+          <img src="gmail.png" alt="Nueva imagen" style="width: 100%; max-width: 220px; border-radius: 8px; margin-bottom: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.10);">
+          <p style="color: #cbd5e1; font-size: 14px; margin-bottom: 8px; text-align: center;">Creación se sitio simulado de la página del ISSS, con el objetivo de aprender a utilizar HTML y CSS.</p>
+          </p>
+          <a href="https://github.com/kat-bit-k/CV1.git" target="_blank" style="background-color: #60a5fa; color: #fff; padding: 8px 16px; border-radius: 6px; text-decoration: none; font-size: 14px;">Ver más</a>
+        </div>
+      </div>
+      <div style="background-color: #1e293b; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.15); padding: 20px; display: flex; flex-direction: column; align-items: center;">
+        <img src="totus.jpg" alt="Proyecto 3" style="width: 100%; max-width: 180px; border-radius: 8px; margin-bottom: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.10);">
+        <p style="color: #cbd5e1; font-size: 15px; margin-bottom: 10px; text-align: center;">desarollo de aplicion web Totus, que busca ayudar al sector informal </p>
+        <a href="https://totus2025.github.io/TOTUS/" target="_blank" style="background-color: #60a5fa; color: #fff; padding: 8px 16px; border-radius: 6px; text-decoration: none; font-size: 14px;">Ver más</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" id="deporte">
+    <h2>Deporte</h2>
+    <hr style="border: none; border-top: 2px solid #60a5fa; margin: 10px 0 18px 0;">
+    <div class="galeria-collage" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 24px; max-width: 1200px; margin: 0 auto;">
+      <img src="do.jpg" alt="Deporte 1" class="deporte-img">
+      <img src="profe.jpg" alt="Deporte 2" class="deporte-img">
+      <img src="camnbio.jpg" alt="Deporte 3" class="deporte-img">
+      <img src="combate.jpg" alt="Deporte 4" class="deporte-img">
+      <img src="coreanos.jpg" alt="Deporte 5" class="deporte-img">
+      <img src="fogueo leones.jpg" alt="Deporte 6" class="deporte-img">
+      <img src="fogueo mar.jpg" alt="Deporte 7" class="deporte-img">
+      <img src="fogueo33.jpg" alt="Deporte 8" class="deporte-img">
+      <img src="medal.jpg" alt="Deporte 9" class="deporte-img">
+      <img src="pumas medal .jpg" alt="Deporte 10" class="deporte-img">
+      <img src="torn.jpg" alt="Deporte 11" class="deporte-img">
+      <img src="torneo.jpg" alt="Deporte 12" class="deporte-img">
+      <img src="trofeo .jpg" alt="Deporte 13" class="deporte-img">
+    </div>  
+  </div>
+
+
+  <div class="section" id="contacto">
+    <h2>Contacto</h2>
+    <form class="contacto-form">
+      <input type="text" placeholder="Nombre completo" required>
+      <input type="email" placeholder="Correo electrónico" required>
+      <textarea rows="4" placeholder="Mensaje..." required></textarea>
+      <button type="submit">Enviar</button>
+    </form>
+  </div> 
+
+  <footer style="background-color: #1e293b; color: #f1f5f9; text-align: center; padding: 20px;">
+    <p>&copy; 2025 Kateryn Andrade | <!-- Asegúrate de tener Font Awesome cargado -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<a href="https://wa.me/50377966363" target="_blank">
+  <i style = "color: #fff;" class="fab fa-whatsapp"></i> 
+</a></p>
+  </footer>
+  <script>
+  function expandirImagen(elemento) {
+    var modal = document.getElementById("modal");
+    var modalContent = modal.querySelector('.modal-content');
+    var modalImg = document.getElementById("imagenModal");
+    modalImg.src = elemento.querySelector("img").src;
+    modalImg.style.display = "block";
+    modalContent.style.display = "flex";
+    modal.style.display = "flex";
+  }
+
+  window.onload = function() {
+    var modal = document.getElementById("modal");
+    var modalContent = modal.querySelector('.modal-content');
+    var modalImg = document.getElementById("imagenModal");
+    modal.style.display = "none";
+    modalContent.style.display = "none";
+    modalImg.style.display = "none";
+    modalImg.src = "";
+  };
+
+  document.getElementById("modal").addEventListener("click", function (e) {
+    if (e.target === this) {
+      this.style.display = "none";
+      var modalContent = this.querySelector('.modal-content');
+      var modalImg = document.getElementById("imagenModal");
+      modalContent.style.display = "none";
+      modalImg.style.display = "none";
+      modalImg.src = "";
+    }
+  });
+</script>
+</body>
+</html>
